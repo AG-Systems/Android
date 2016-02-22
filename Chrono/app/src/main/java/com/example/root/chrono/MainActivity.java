@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.app.FragmentManager;
+import java.util.AbstractList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
+
             }
 
             @Override
