@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.app.FragmentManager;
 import java.util.AbstractList;
-import java.util.List;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         final  ArrayList<Double> elementsx = new ArrayList<>();
         final ArrayList<Double> elementsy = new ArrayList<>();
-        // need to fix this bs 
+        // need to fix this bs
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
