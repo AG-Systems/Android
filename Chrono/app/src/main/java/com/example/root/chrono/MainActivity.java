@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.app.FragmentManager;
 import java.util.AbstractList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,11 +43,16 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
+        final  ArrayList<Double> elementsx = new ArrayList<>();
+        final ArrayList<Double> elementsy = new ArrayList<>();
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
+               // elementsx.add(location.getLatitude());
+              //  elementsy.add(location.getLongitude());
+
+
 
             }
 
