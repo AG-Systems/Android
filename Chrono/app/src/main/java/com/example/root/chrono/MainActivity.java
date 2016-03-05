@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         final  ArrayList<Double> elementsx = new ArrayList<>();
         final ArrayList<Double> elementsy = new ArrayList<>();
+        // need to fix this bs 
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
