@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<Double> elementsy = new ArrayList<>();
         locationListener = new LocationListener() {
             int counter = -1;
+            // if ^ 0 then it will crash.
             boolean tasker = false;
             @Override
             public void onLocationChanged(Location location) {
@@ -59,11 +60,19 @@ public class MainActivity extends AppCompatActivity {
                 elementsy.add(location.getLongitude());
                 if (location.getLatitude() -  elementsx.get(counter) < 1 || location.getLongitude() -  elementsy.get(counter) < 1)
                 {
+                    if(counter == 0)
+                    {
+                        textView.setText("");
+                    }
                     textView.append("Working");
                     tasker = true;
                 }
                 if (location.getLatitude() -  elementsx.get(counter) > 1 || location.getLongitude() -  elementsy.get(counter) > 1)
                 {
+                    if(counter == 0)
+                    {
+                        textView.setText("");
+                    }
                     textView.append("Driving");
                     tasker = true;
                 }
