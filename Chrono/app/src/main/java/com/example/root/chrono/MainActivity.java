@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.app.FragmentManager;
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,21 +38,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        double differencex;
+        double differencey;
         button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        final  ArrayList<Double> elementsx = new ArrayList<>();
+        final ArrayList<Double> elementsx = new ArrayList<>();
         final ArrayList<Double> elementsy = new ArrayList<>();
         // need to fix this bs
         locationListener = new LocationListener() {
+            int counter = 0;
             @Override
             public void onLocationChanged(Location location) {
                 textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
-               // elementsx.add(location.getLatitude());
-              //  elementsy.add(location.getLongitude());
+                counter++;
+                elementsx.add(location.getLatitude());
+                elementsy.add(location.getLongitude());
+                if (location.getLatitude() -  elementsx.get(counter) == 1)
+                {
+                
+                }
+
+
 
 
 
@@ -109,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (ActivityCompat.checkSelfPermission(view.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(view.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
                 {
+
                     // TODO: Consider calling
                     //    ActivityCompat#requestPermissions
                     // here to request the missing permissions, and then overriding
