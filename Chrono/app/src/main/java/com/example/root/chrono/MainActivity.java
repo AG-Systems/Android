@@ -46,18 +46,26 @@ public class MainActivity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         final ArrayList<Double> elementsx = new ArrayList<>();
         final ArrayList<Double> elementsy = new ArrayList<>();
-        // need to fix this bs
         locationListener = new LocationListener() {
-            int counter = 0;
+            int counter = -1;
+            boolean tasker = false;
             @Override
             public void onLocationChanged(Location location) {
-                textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
+                if (tasker == false) {
+                    textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
+                }
                 counter++;
                 elementsx.add(location.getLatitude());
                 elementsy.add(location.getLongitude());
-                if (location.getLatitude() -  elementsx.get(counter) == 1)
+                if (location.getLatitude() -  elementsx.get(counter) < 1 || location.getLongitude() -  elementsy.get(counter) < 1)
                 {
-                
+                    textView.append("Working");
+                    tasker = true;
+                }
+                if (location.getLatitude() -  elementsx.get(counter) > 1 || location.getLongitude() -  elementsy.get(counter) > 1)
+                {
+                    textView.append("Driving");
+                    tasker = true;
                 }
 
 
