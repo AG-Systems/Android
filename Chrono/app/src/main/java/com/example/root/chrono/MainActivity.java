@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 counter++;
                 elementsx.add(location.getLatitude());
                 elementsy.add(location.getLongitude());
-                if (location.getLatitude() -  elementsx.get(counter) < 1 || location.getLongitude() -  elementsy.get(counter) < 1)
+                if (location.getLatitude() -  elementsx.get(counter) < 1 && location.getLongitude() -  elementsy.get(counter) < 1)
                 {
                     if(counter == 0)
                     {
