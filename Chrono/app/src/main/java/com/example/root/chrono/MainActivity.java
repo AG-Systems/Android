@@ -46,9 +46,13 @@ public class MainActivity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         final ArrayList<Double> elementsx = new ArrayList<>();
         final ArrayList<Double> elementsy = new ArrayList<>();
+        final ArrayList<Double> workx = new ArrayList<>();
+        final ArrayList<Double> worky = new ArrayList<>();
         locationListener = new LocationListener() {
             int counter = -1;
             // if ^ 0 then it will crash.
+            int reset = 0;
+            int maxreset = 2000000000;
             boolean tasker = false;
             @Override
             public void onLocationChanged(Location location) {
@@ -64,7 +68,12 @@ public class MainActivity extends AppCompatActivity {
                     {
                         textView.setText("");
                     }
-                    textView.append("Working");
+                    reset++;
+                    if(reset > 4)
+                    {
+                        textView.append("Working");
+                    }
+
                     tasker = true;
                 }
                 if (location.getLatitude() -  elementsx.get(counter) > 1 || location.getLongitude() -  elementsy.get(counter) > 1)
@@ -73,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         textView.setText("");
                     }
+                    reset = 0;
                     textView.append("Driving");
                     tasker = true;
                 }
@@ -146,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                     // for ActivityCompat#requestPermissions for more details.
                     return;
                 }
-                locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
+                locationManager.requestLocationUpdates("gps", 30000, 0, locationListener);
             }
         });
     }
