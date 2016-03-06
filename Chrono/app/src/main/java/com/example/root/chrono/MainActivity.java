@@ -44,11 +44,12 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        final ArrayList<Double> elementsx = new ArrayList<>();
-        final ArrayList<Double> elementsy = new ArrayList<>();
-        final ArrayList<Double> workx = new ArrayList<>();
-        final ArrayList<Double> worky = new ArrayList<>();
+
         locationListener = new LocationListener() {
+            ArrayList<Double> elementsx = new ArrayList<>();
+            ArrayList<Double> elementsy = new ArrayList<>();
+            ArrayList<Double> workx = new ArrayList<>();
+            ArrayList<Double> worky = new ArrayList<>();
             int counter = -1;
             // if ^ 0 then it will crash.
             int reset = 0;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 counter++;
                 elementsx.add(location.getLatitude());
                 elementsy.add(location.getLongitude());
-                if (location.getLatitude() -  elementsx.get(counter) < 1 && location.getLongitude() -  elementsy.get(counter) < 1)
+                if (location.getLatitude() -  elementsx.get(counter) < 0.1 && location.getLongitude() -  elementsy.get(counter) < 0.1)
                 {
                     if(counter == 0)
                     {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
                     tasker = true;
                 }
-                if (location.getLatitude() -  elementsx.get(counter) > 1 || location.getLongitude() -  elementsy.get(counter) > 1)
+                if (location.getLatitude() -  elementsx.get(counter) > 0.1 || location.getLongitude() -  elementsy.get(counter) > 0.1)
                 {
                     if(counter == 0)
                     {
