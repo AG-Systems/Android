@@ -19,6 +19,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.app.FragmentManager;
+
+import java.io.File;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -31,7 +33,15 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private LocationListener locationListener;
 
-    // Work on this.
+    public void writeMessage()
+    {
+
+    }
+    public void readMessage()
+    {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         locationListener = new LocationListener() {
             ArrayList<Double> elementsx = new ArrayList<>();
             ArrayList<Double> elementsy = new ArrayList<>();
