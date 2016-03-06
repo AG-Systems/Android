@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public void writeMessage(Double input)
     {
         String inputString = Double.toString(input);
-        String filename = "hello_file_auriga";
+        String filename = "hello_file_auriga.txt";
         try {
             FileOutputStream fileOutputStream = openFileOutput(filename, MODE_PRIVATE);
             fileOutputStream.write(Integer.parseInt(inputString));
@@ -78,37 +78,40 @@ public class MainActivity extends AppCompatActivity {
             int reset = 0;
             int maxreset = 2000000000;
             boolean tasker = false;
+            double threshhold = 0.001;
             @Override
             public void onLocationChanged(Location location) {
-                if (tasker == false) {
-                    textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
+                if (tasker == false)
+                {
+                    //textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
                 }
+                if()
                 counter++;
                 elementsx.add(location.getLatitude());
                 elementsy.add(location.getLongitude());
                 double subtractx = location.getLatitude() -  elementsx.get(counter);
                 double subtracty = location.getLongitude() -  elementsy.get(counter);
-                writeMessage(subtractx);
-                if (location.getLatitude() -  elementsx.get(counter) < 0.1 && location.getLongitude() -  elementsy.get(counter) < 0.1)
+                //writeMessage(subtractx);
+                if (location.getLatitude() -  elementsx.get(counter) < threshhold && location.getLongitude() -  elementsy.get(counter) < threshhold)
                 {
-                    if(counter == 0)
-                    {
-                        textView.setText("");
-                    }
+
                     reset++;
-                    if(reset > 4)
+                    if(reset > 1)
                     {
-                        textView.append("Working");
+                        //textView.append("Working");
+                        String convertx = Double.toString(elementsx.get(counter));
+                        String converty = Double.toString(location.getLatitude());
+                        textView.append(convertx);
+                        textView.append(" ");
+                        textView.append(converty);
+
+
                     }
 
                     tasker = true;
                 }
-                if (location.getLatitude() -  elementsx.get(counter) > 0.1 || location.getLongitude() -  elementsy.get(counter) > 0.1)
+                if (location.getLatitude() -  elementsx.get(counter) > threshhold || location.getLongitude() -  elementsy.get(counter) > threshhold)
                 {
-                    if(counter == 0)
-                    {
-                        textView.setText("");
-                    }
                     reset = 0;
                     textView.append("Driving");
                     tasker = true;
