@@ -21,6 +21,9 @@ import android.widget.TextView;
 import android.app.FragmentManager;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -33,9 +36,20 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private LocationListener locationListener;
 
-    public void writeMessage()
+    public void writeMessage(Double input)
     {
-
+        String inputString = Double.toString(input);
+        String filename = "hello_file_auriga";
+        try {
+            FileOutputStream fileOutputStream = openFileOutput(filename, MODE_PRIVATE);
+            fileOutputStream.write(Integer.parseInt(inputString));
+            fileOutputStream.write(Integer.parseInt("/n"));
+            fileOutputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void readMessage()
     {
@@ -72,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 counter++;
                 elementsx.add(location.getLatitude());
                 elementsy.add(location.getLongitude());
+                double subtractx = location.getLatitude() -  elementsx.get(counter);
+                double subtracty = location.getLongitude() -  elementsy.get(counter);
+                writeMessage(subtractx);
                 if (location.getLatitude() -  elementsx.get(counter) < 0.1 && location.getLongitude() -  elementsy.get(counter) < 0.1)
                 {
                     if(counter == 0)
