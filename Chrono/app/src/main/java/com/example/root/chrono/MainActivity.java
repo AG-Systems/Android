@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         String convertx = Double.toString(subtractx);
                         String converty = Double.toString(subtracty);
                         textView.append(convertx);
-                        textView.append(" ");
+                        textView.append("        ");
                         textView.append(converty);
 
 
