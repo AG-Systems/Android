@@ -73,34 +73,38 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Double> elementsy = new ArrayList<>();
             ArrayList<Double> workx = new ArrayList<>();
             ArrayList<Double> worky = new ArrayList<>();
-            int counter = -1;
+            int counter = 0;
             // if ^ 0 then it will crash.
             int reset = 0;
             int maxreset = 2000000000;
+            int intial = 0;
             boolean tasker = false;
-            double threshhold = 0.001;
+            double positivethresh = 0.001;
+            double negativethresh = -0.001;
             @Override
             public void onLocationChanged(Location location) {
                 if (tasker == false)
                 {
                     //textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
                 }
-                if()
-                counter++;
+                if(intial > 2) {
+                    counter++;
+                }
+                intial++;
                 elementsx.add(location.getLatitude());
                 elementsy.add(location.getLongitude());
                 double subtractx = location.getLatitude() -  elementsx.get(counter);
                 double subtracty = location.getLongitude() -  elementsy.get(counter);
                 //writeMessage(subtractx);
-                if (location.getLatitude() -  elementsx.get(counter) < threshhold && location.getLongitude() -  elementsy.get(counter) < threshhold)
+                if (location.getLatitude() -  elementsx.get(counter) < positivethresh && location.getLongitude() -  elementsy.get(counter) < positivethresh && subtractx > negativethresh && subtracty > negativethresh)
                 {
 
                     reset++;
                     if(reset > 1)
                     {
                         //textView.append("Working");
-                        String convertx = Double.toString(elementsx.get(counter));
-                        String converty = Double.toString(location.getLatitude());
+                        String convertx = Double.toString(subtractx);
+                        String converty = Double.toString(subtracty);
                         textView.append(convertx);
                         textView.append(" ");
                         textView.append(converty);
