@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
                     tasker = true;
                 }
-                if (location.getLatitude() -  elementsx.get(counter) > threshhold || location.getLongitude() -  elementsy.get(counter) > threshhold)
+                if (location.getLatitude() -  elementsx.get(counter) > positivethresh || location.getLongitude() -  elementsy.get(counter) > positivethresh)
                 {
                     reset = 0;
                     textView.append("Driving");
