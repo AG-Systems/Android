@@ -73,14 +73,17 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Double> elementsy = new ArrayList<>();
             ArrayList<Double> workx = new ArrayList<>();
             ArrayList<Double> worky = new ArrayList<>();
+            ArrayList<Double> worktime = new ArrayList<>();
             int counter = 0;
             // if ^ 0 then it will crash.
             int reset = 0;
             int maxreset = 2000000000;
             int intial = 0;
             boolean tasker = false;
-            double positivethresh = 0.000001;
-            double negativethresh = -0.000001;
+            double positivethresh = 0.0001;
+            double negativethresh = -0.0001;
+            long worktimestart = System.nanoTime();
+
             @Override
             public void onLocationChanged(Location location) {
                 if (tasker == false)
@@ -96,28 +99,35 @@ public class MainActivity extends AppCompatActivity {
                 double subtractx = location.getLatitude() -  elementsx.get(counter);
                 double subtracty = location.getLongitude() -  elementsy.get(counter);
                 //writeMessage(subtractx);
-                if (location.getLatitude() -  elementsx.get(counter) < positivethresh && location.getLongitude() -  elementsy.get(counter) < positivethresh && subtractx > negativethresh && subtracty > negativethresh)
-                {
+                if (location.getLatitude() -  elementsx.get(counter) < positivethresh && location.getLongitude() -  elementsy.get(counter) < positivethresh && subtractx > negativethresh && subtracty > negativethresh) {
 
                     reset++;
-                    if(reset > 1)
+                    if(reset > 2)
                     {
-                        //textView.append("Working");
-                        String convertx = Double.toString(subtractx);
+                        if()
+                        long worktimestart = System.nanoTime();
+                        workx.add(location.getLatitude());
+                        workx.add(location.getLongitude());
+                        textView.setText("Idle");
+                        /*String convertx = Double.toString(subtractx);
                         String converty = Double.toString(subtracty);
                         textView.append(convertx);
                         textView.append("        ");
                         textView.append(converty);
+                        */
 
 
                     }
 
                     tasker = true;
                 }
-                if (location.getLatitude() -  elementsx.get(counter) > positivethresh || location.getLongitude() -  elementsy.get(counter) > positivethresh)
+                if (location.getLatitude() -  elementsx.get(counter) > positivethresh || location.getLongitude() -  elementsy.get(counter) > positivethresh || subtractx < negativethresh || subtracty < negativethresh)
                 {
+                    long worktimeresults = System.nanoTime() - worktimestart;
+                    double worksec = (double)worktimeresults / 1000000000.0;
+                    worktime.add(worksec);
                     reset = 0;
-                    textView.append("Driving");
+                    textView.setText("Driving");
                     tasker = true;
                 }
 
