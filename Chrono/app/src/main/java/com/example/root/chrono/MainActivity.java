@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private LocationManager locationManager;
     private LocationListener locationListener;
-
+    private TextView textView2;
     public void writeMessage(Double input)
     {
         String inputString = Double.toString(input);
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     reset++;
                     if(reset > 2)
                     {
-                        if()
+                        // if(location.getLatitude() == )
                         long worktimestart = System.nanoTime();
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     worktime.add(worksec);
                     reset = 0;
                     textView.setText("Driving");
+                    textView2.setText((int) worksec);
                     tasker = true;
                 }
 
