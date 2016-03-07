@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
             int maxreset = 2000000000;
             int intial = 0;
             boolean tasker = false;
-            double positivethresh = 0.000000001;
-            double negativethresh = -0.00000001;
+            double positivethresh = 0.000001;
+            double negativethresh = -0.000001;
             @Override
             public void onLocationChanged(Location location) {
                 if (tasker == false)
