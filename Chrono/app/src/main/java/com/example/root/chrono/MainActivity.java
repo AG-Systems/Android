@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         double differencey;
         button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
-
+        textView2 = (TextView) findViewById(R.id.textView2);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             ArrayList<Double> elementsx = new ArrayList<>();
@@ -74,23 +74,25 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Double> workx = new ArrayList<>();
             ArrayList<Double> worky = new ArrayList<>();
             ArrayList<Double> worktime = new ArrayList<>();
+            ArrayList<Double> drivetime = new ArrayList<>();
             int counter = 0;
             // if ^ 0 then it will crash.
             int reset = 0;
             int maxreset = 2000000000;
             int intial = 0;
             boolean tasker = false;
-            double positivethresh = 0.0001;
-            double negativethresh = -0.0001;
-            long worktimestart = System.nanoTime();
-
+            double positivethresh = 0.00001;
+            double negativethresh = -0.00001;
+            long worktimestart = 0;
+            long drivingtimestart = 0;
             @Override
             public void onLocationChanged(Location location) {
                 if (tasker == false)
                 {
                     //textView.append("\n" + location.getLatitude() + " " + location.getLongitude());
                 }
-                if(intial > 2) {
+                if(intial > 2)
+                {
                     counter++;
                 }
                 intial++;
@@ -108,7 +110,10 @@ public class MainActivity extends AppCompatActivity {
                         long worktimestart = System.nanoTime();
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
-                        textView.setText("Idle");
+                        textView.append("Idle");
+                        long drivingtimeresults = System.nanoTime() - worktimestart;
+                        double drivingsec = (double)drivingtimeresults / 1000000000.0;
+                        drivetime.add(drivingsec);
                         /*String convertx = Double.toString(subtractx);
                         String converty = Double.toString(subtracty);
                         textView.append(convertx);
@@ -126,9 +131,10 @@ public class MainActivity extends AppCompatActivity {
                     long worktimeresults = System.nanoTime() - worktimestart;
                     double worksec = (double)worktimeresults / 1000000000.0;
                     worktime.add(worksec);
+                    long drivingtimestart = System.nanoTime();
                     reset = 0;
-                    textView.setText("Driving");
-                    textView2.setText((int) worksec);
+                    textView.append("Driving");
+                    textView2.setText(Double.toString(worksec));
                     tasker = true;
                 }
 
