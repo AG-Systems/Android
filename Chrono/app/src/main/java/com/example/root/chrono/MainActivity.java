@@ -131,12 +131,22 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                     /*
+
+                    -What I did:
+
+                    - Get the coordinates.[check]
+
+                    - Determine the difference between driving and idling.[check]
+
+                    - Setup the timers with driving and idling
+
                     [SIMPLE AND NEEDS]
-                    - 2 main locations: Home and work. Most time will be spent in these 2 parts for a average post college grad. Make it determine between the 2 using the coordinates.
+                    - 2 main locations: Home and work. Most time will be spent in these 2 parts for a average post college grad. Make it determine between the 2 using the coordinates. []
 
-                    - Driving will have big gaps in data. Take the average after each day and compare the next days. That will be the driving path to work. Use times too to know. Generally when there is gaps , then you are driving.
+                    - Driving will have big gaps in data. Take the average after each day and compare the next days. That will be the driving path to work. Use times too to know. Generally when there is gaps , then you are driving. []
 
-                    -Time either of the 3 tasks (home,driving,work), Use corrdinates to determine between all of them,
+                    -Time either of the 3 tasks (home,driving,work), Use corrdinates to determine between all of them, be accurate with the time too. []
+
                     [PLANNED]
                     -Make a option of choosing what times your timeline
 
@@ -144,9 +154,11 @@ public class MainActivity extends AppCompatActivity {
 
                     -Maybe use weekends by using the calender and finding patterns in days.
 
-                    - Add a manual option to help out the program.
+                    - Add a manual option to help out the program and be more accurate.
 
-                    -
+                    - In the settings page there is tons of options so you can choose to be more accurate or save more batter etc etc.
+
+                    - Use google maps api to see the places around you to guess what you are doing. Example next to a gym then it asumes that you are at a gym because you do this often. etc etc
                      */
 
 
