@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -74,7 +75,10 @@ public class MainActivity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             Timer timeforwork;
+            TimerTask timerTask;
             Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd:MMMM:yyyy HH:mm:ss a");
+            final String strDate = simpleDateFormat.format(calendar.getTime());
             ArrayList<Double> elementsx = new ArrayList<>();
             ArrayList<Double> elementsy = new ArrayList<>();
             ArrayList<Double> workx = new ArrayList<>();
@@ -114,17 +118,10 @@ public class MainActivity extends AppCompatActivity {
                     {
                         // if(location.getLatitude() == )
                         timeforwork = new Timer();
-
+                        timeforwork.schedule(timerTask,5000);
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
                         textView.setText("Idle");
-                        /*String convertx = Double.toString(subtractx);
-                        String converty = Double.toString(subtracty);
-                        textView.append(convertx);
-                        textView.append("        ");
-                        textView.append(converty);
-                        */
-
 
                     }
 
@@ -133,7 +130,9 @@ public class MainActivity extends AppCompatActivity {
                 if (location.getLatitude() -  elementsx.get(counter) > positivethresh || location.getLongitude() -  elementsy.get(counter) > positivethresh || subtractx < negativethresh || subtracty < negativethresh)
                 {
                     reset = 0;
+                    timeforwork.cancel();
                     textView.setText("Driving");
+                    textView2.setText(strDate);
                     // textView2.setText(Double.toString(worksec));
                     tasker = true;
                 }
