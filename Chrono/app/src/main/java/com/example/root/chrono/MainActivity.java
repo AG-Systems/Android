@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
             int maxreset = 2000000000;
             int intial = 0;
             boolean tasker = false;
-            double positivethresh = 0.00001;
-            double negativethresh = -0.00001;
+            double positivethresh = 0.00090;
+            double negativethresh = -0.00090;
             long worktimestart = 0;
             long drivingtimestart = 0;
             @Override
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         // if(location.getLatitude() == )
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
-                        textView.setText("Idle");
+                        textView.append("Idle");
 
                     }
 
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 if (location.getLatitude() -  elementsx.get(counter) > positivethresh || location.getLongitude() -  elementsy.get(counter) > positivethresh || subtractx < negativethresh || subtracty < negativethresh)
                 {
                     reset = 0;
-                    textView.setText("Driving");
+                    textView.append("Driving");
                     // textView2.setText(strDate);
                     // textView2.setText(Double.toString(worksec));
                     tasker = true;
