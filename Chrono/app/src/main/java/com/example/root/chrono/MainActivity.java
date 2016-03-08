@@ -26,6 +26,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -65,12 +66,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         double differencex;
         double differencey;
+
         button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
         textView2 = (TextView) findViewById(R.id.textView2);
         textView3 = (TextView) findViewById(R.id.textView3);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
+            Timer timeforwork;
+            Calendar calendar = Calendar.getInstance();
             ArrayList<Double> elementsx = new ArrayList<>();
             ArrayList<Double> elementsy = new ArrayList<>();
             ArrayList<Double> workx = new ArrayList<>();
@@ -109,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
                     if(reset > 2)
                     {
                         // if(location.getLatitude() == )
+                        timeforwork = new Timer();
+
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
                         textView.setText("Idle");
