@@ -130,7 +130,24 @@ public class MainActivity extends AppCompatActivity {
                     tasker = true;
                 }
 
+                    /*
+                    [SIMPLE AND NEEDS]
+                    - 2 main locations: Home and work. Most time will be spent in these 2 parts for a average post college grad. Make it determine between the 2 using the coordinates.
 
+                    - Driving will have big gaps in data. Take the average after each day and compare the next days. That will be the driving path to work. Use times too to know. Generally when there is gaps , then you are driving.
+
+                    -Time either of the 3 tasks (home,driving,work), Use corrdinates to determine between all of them,
+                    [PLANNED]
+                    -Make a option of choosing what times your timeline
+
+                    -Maybe make a option to choose if they have work + school + gym or whatever they want. They can edit it too.
+
+                    -Maybe use weekends by using the calender and finding patterns in days.
+
+                    - Add a manual option to help out the program.
+
+                    -
+                     */
 
 
 
