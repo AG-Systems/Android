@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private LocationListener locationListener;
     private TextView textView2;
+    private TextView textView3;
     public void writeMessage(Double input)
     {
         String inputString = Double.toString(input);
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
         textView2 = (TextView) findViewById(R.id.textView2);
+        textView3 = (TextView) findViewById(R.id.textView3);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             ArrayList<Double> elementsx = new ArrayList<>();
@@ -107,13 +109,9 @@ public class MainActivity extends AppCompatActivity {
                     if(reset > 2)
                     {
                         // if(location.getLatitude() == )
-                        long worktimestart = System.nanoTime();
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
-                        textView.append("Idle");
-                        long drivingtimeresults = System.nanoTime() - worktimestart;
-                        double drivingsec = (double)drivingtimeresults / 1000000000.0;
-                        drivetime.add(drivingsec);
+                        textView.setText("Idle");
                         /*String convertx = Double.toString(subtractx);
                         String converty = Double.toString(subtracty);
                         textView.append(convertx);
@@ -128,13 +126,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (location.getLatitude() -  elementsx.get(counter) > positivethresh || location.getLongitude() -  elementsy.get(counter) > positivethresh || subtractx < negativethresh || subtracty < negativethresh)
                 {
-                    long worktimeresults = System.nanoTime() - worktimestart;
-                    double worksec = (double)worktimeresults / 1000000000.0;
-                    worktime.add(worksec);
-                    long drivingtimestart = System.nanoTime();
                     reset = 0;
-                    textView.append("Driving");
-                    textView2.setText(Double.toString(worksec));
+                    textView.setText("Driving");
+                    // textView2.setText(Double.toString(worksec));
                     tasker = true;
                 }
 
