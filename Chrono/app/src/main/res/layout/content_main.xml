@@ -50,4 +50,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
