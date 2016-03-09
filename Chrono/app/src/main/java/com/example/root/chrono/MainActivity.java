@@ -31,7 +31,7 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.widget.Chronometer;
-
+import android.os.SystemClock;
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
@@ -40,26 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private LocationListener locationListener;
     private TextView textView2;
     private TextView textView3;
-    public void writeMessage(Double input)
-    {
-        String inputString = Double.toString(input);
-        String filename = "hello_file_auriga.txt";
-        try {
-            FileOutputStream fileOutputStream = openFileOutput(filename, MODE_PRIVATE);
-            fileOutputStream.write(Integer.parseInt(inputString));
-            fileOutputStream.write(Integer.parseInt("/n"));
-            fileOutputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void readMessage()
-    {
-
-    }
-
+    public Chronometer chronometer_driving;
+    public Chronometer chronometer_working;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
         textView2 = (TextView) findViewById(R.id.textView2);
-        textView3 = (TextView) findViewById(R.id.textView3);
+        chronometer_driving = (Chronometer)findViewById(R.id.chronometer_driving);
+        chronometer_working = (Chronometer)findViewById(R.id.chronometer_working);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
 
@@ -107,13 +90,15 @@ public class MainActivity extends AppCompatActivity {
                 elementsy.add(location.getLongitude());
                 double subtractx = location.getLatitude() -  elementsx.get(counter);
                 double subtracty = location.getLongitude() -  elementsy.get(counter);
-                //writeMessage(subtractx);
                 if (location.getLatitude() -  elementsx.get(counter) < positivethresh && location.getLongitude() -  elementsy.get(counter) < positivethresh && subtractx > negativethresh && subtracty > negativethresh) {
 
                     reset++;
                     if(reset > 2)
                     {
                         // if(location.getLatitude() == )
+                        chronometer_driving.stop();
+                        chronometer_working.setBase(SystemClock.elapsedRealtime());
+                        chronometer_working.start();
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
                         textView.append("Idle");
@@ -125,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
                 if (location.getLatitude() -  elementsx.get(counter) > positivethresh || location.getLongitude() -  elementsy.get(counter) > positivethresh || subtractx < negativethresh || subtracty < negativethresh)
                 {
                     reset = 0;
+                    chronometer_working.stop();
+                    chronometer_driving.setBase(SystemClock.elapsedRealtime());
+                    chronometer_driving.start();
                     textView.append("Driving");
                     // textView2.setText(strDate);
                     // textView2.setText(Double.toString(worksec));
