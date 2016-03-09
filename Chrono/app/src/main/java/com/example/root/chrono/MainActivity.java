@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
                     - Determine the difference between driving and idling.[check]
 
-                    - Setup the timers with driving and idling
+                    - Setup the timers with driving and idling [check]
 
                     [SIMPLE AND NEEDS]
                     - 2 main locations: Home and work. Most time will be spent in these 2 parts for a average post college grad. Make it determine between the 2 using the coordinates. []
