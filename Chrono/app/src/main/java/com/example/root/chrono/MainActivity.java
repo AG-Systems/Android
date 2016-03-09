@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Double> drivetime = new ArrayList<>();
             int counter = 0;
             // if ^ 0 then it will crash.
+            int counterforwork = 0;
+            int counterfordriving = 0;
             int reset = 0;
             int maxreset = 2000000000;
             int intial = 0;
@@ -93,12 +95,18 @@ public class MainActivity extends AppCompatActivity {
                 if (location.getLatitude() -  elementsx.get(counter) < positivethresh && location.getLongitude() -  elementsy.get(counter) < positivethresh && subtractx > negativethresh && subtracty > negativethresh) {
 
                     reset++;
+                    counterforwork++;
+                    counterfordriving = 0;
                     if(reset > 2)
                     {
                         // if(location.getLatitude() == )
                         chronometer_driving.stop();
-                        chronometer_working.setBase(SystemClock.elapsedRealtime());
-                        chronometer_working.start();
+                        if(counterforwork == 3)
+                        {
+                            chronometer_working.setBase(SystemClock.elapsedRealtime());
+                            chronometer_working.start();
+                        }
+
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
                         textView.append("Idle ");
@@ -110,9 +118,13 @@ public class MainActivity extends AppCompatActivity {
                 if (location.getLatitude() -  elementsx.get(counter) > positivethresh || location.getLongitude() -  elementsy.get(counter) > positivethresh || subtractx < negativethresh || subtracty < negativethresh)
                 {
                     reset = 0;
+                    counterfordriving++;
+                    if(counterfordriving == 1)
+                    {
+                        chronometer_driving.setBase(SystemClock.elapsedRealtime());
+                        chronometer_driving.start();
+                    }
                     chronometer_working.stop();
-                    chronometer_driving.setBase(SystemClock.elapsedRealtime());
-                    chronometer_driving.start();
                     textView.append("Driving ");
                     // textView2.setText(strDate);
                     // textView2.setText(Double.toString(worksec));
