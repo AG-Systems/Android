@@ -116,16 +116,6 @@ public class MainActivity extends AppCompatActivity {
                         {
                             chronometer_working.setBase(SystemClock.elapsedRealtime());
                             chronometer_working.start();
-                            try {
-                                FileOutputStream timetables = openFileOutput("timetables.txt", MODE_APPEND);
-                                OutputStreamWriter timeOutput = new OutputStreamWriter(timetables);
-                                timeOutput.append("DRIVING_TIMES:");
-                                timeOutput.append(String.valueOf(chronometer_driving));
-                                timeOutput.flush();
-                                timeOutput.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
                         }
 
                         workx.add(location.getLatitude());
@@ -145,17 +135,6 @@ public class MainActivity extends AppCompatActivity {
                         chronometer_driving.setBase(SystemClock.elapsedRealtime());
                         chronometer_driving.start();
                         chronometer_working.stop();
-
-                        try {
-                            FileOutputStream timetables = openFileOutput("timetables.txt", MODE_APPEND);
-                            OutputStreamWriter timeOutput = new OutputStreamWriter(timetables);
-                            timeOutput.append("WORKING_TIMES:");
-                            timeOutput.append(String.valueOf(chronometer_working));
-                            timeOutput.flush();
-                            timeOutput.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
                     }
 
                     textView.setText("Driving ");
