@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import android.widget.Chronometer;
 import android.os.SystemClock;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView3;
     public Chronometer chronometer_driving;
     public Chronometer chronometer_working;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +59,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         double differencex;
         double differencey;
-
+        try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("DataForChrono.txt", true)))) {
+            out.println("the text");
+            //more code
+            out.println("more text");
+            //more code
+        }catch (IOException e) {
+            //exception handling left as an exercise for the reader
+        }
         button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
         textView2 = (TextView) findViewById(R.id.textView2);
