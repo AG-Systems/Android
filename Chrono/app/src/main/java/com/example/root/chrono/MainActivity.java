@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                    
+
                     textView.setText("Driving ");
                     // textView2.setText(strDate);
                     // textView2.setText(Double.toString(worksec));
