@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
                     reset++;
                     counterforwork++;
-                    counterfordriving = 0;
                     if(reset > 2)
                     {
                         // if(location.getLatitude() == )
+                        counterfordriving = 0;
                         chronometer_driving.stop();
                         if(counterforwork == 3)
                         {
