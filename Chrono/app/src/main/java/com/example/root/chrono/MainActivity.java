@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
-                        textView.append("Idle ");
+                        textView.setText("Idle ");
 
                     }
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                         chronometer_driving.start();
                     }
                     chronometer_working.stop();
-                    textView.append("Driving ");
+                    textView.setText("Driving ");
                     // textView2.setText(strDate);
                     // textView2.setText(Double.toString(worksec));
                     tasker = true;
