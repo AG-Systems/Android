@@ -11,7 +11,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
-    // make variables
+    public static final String DATABASE_NAME = "main.db";
+    public static final String TABLE_NAME = "main_table";
+    public static final String COL_1 = "ID";
+    public static final String COL_2 = "NAME";
+    public static final String COL_3 = "SURNAME";
+    public static final String COL_4 = "MARKS";
     @Override
     public void onCreate(SQLiteDatabase db) {
 
