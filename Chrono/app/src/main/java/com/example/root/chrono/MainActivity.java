@@ -42,7 +42,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 public class MainActivity extends AppCompatActivity {
-
+    DatabaseHelper myDb;
     private Button button;
     private TextView textView;
     private LocationManager locationManager;
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        myDb = new DatabaseHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
