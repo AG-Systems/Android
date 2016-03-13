@@ -276,3 +276,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+                        /* public void viewAll()
+                        {
+                            Cursor res. myBd.getAllData();
+                            if (res.getCount() == 0)
+                            {
+                                return;
+                            }
+
+                            StringBuffer buffer = new StringBuffer();
+                            while (res.moveToNext())
+                            {
+                                buffer.append("Id : " + res.getString(0));
+                            }
+                        }
+                         */
