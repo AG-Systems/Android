@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.app.FragmentManager;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         myDb = new DatabaseHelper(this);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -194,9 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
                     - Fix the bugs when they come up.
                      */
-
-
-
+                
             }
 
             @Override
