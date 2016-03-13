@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                         if (chronometer_working.getText().toString().equals("00:59:59"))
                         {
                             worktimehour++;
-
+                            textView.setText("it worked");
                         }
                         if (chronometer_driving.getText().toString().equals("00:59:59"))
                         {
@@ -148,11 +148,6 @@ public class MainActivity extends AppCompatActivity {
                             hometimehour++;
                         }
 
-
-                        if (chronometer_working.getText().toString().equals("00:59:59"))
-                        {
-                            textView.setText("working");
-                        }
                         if(working = true)
                         {
                             workx.add(location.getLatitude());
@@ -192,8 +187,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     textView.setText("Driving ");
-                    // textView2.setText(strDate);
-                    // textView2.setText(Double.toString(worksec));
                     tasker = true;
                 }
 
