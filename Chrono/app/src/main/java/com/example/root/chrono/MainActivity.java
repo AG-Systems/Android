@@ -81,7 +81,10 @@ public class MainActivity extends AppCompatActivity {
             int reset = 0;
             int maxreset = 2000000000;
             int intial = 0;
+            int worktimehour = 0;
+            int drivetimehour = 0;
             boolean tasker = false;
+            boolean working = false;
             double positivethresh = 0.00090;
             double negativethresh = -0.00090;
             long worktimestart = 0;
@@ -114,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                         chronometer_driving.stop();
                         // String workx, String worky, String homex, String homey, String time, String hours
                         // boolean isInserted =  myDb.insertData(chronometer_driving.getText().toString(), chronometer_driving.getText().toString(), chronometer_driving.getText().toString());
-
                         if (isInserted = true)
                         {
                             // send a message or whatever
@@ -127,8 +129,15 @@ public class MainActivity extends AppCompatActivity {
                             chronometer_working.start();
                         }
 
-                        workx.add(location.getLatitude());
-                        workx.add(location.getLongitude());
+                        if (chronometer_working.getText().toString().equals("00:59:59"))
+                        {
+                            textView.setText("working");
+                        }
+                        if(working = true)
+                        {
+                            workx.add(location.getLatitude());
+                            workx.add(location.getLongitude());
+                        }
 
                         /* sudo code
 
@@ -137,6 +146,12 @@ public class MainActivity extends AppCompatActivity {
                         Also use the calender to try detect patterns. Figure out how to detect the difference between work/school, home and driving. Detect patterns in weekends and timing.
 
                         This will be difficult and challenging but also really rewarding and I WILL finish this project.
+
+                        How am I going to know when im at work for the first time.
+
+                        I can make it so the user needs to be at home to start. maybe start then go driving then be at work for a few hours and then it will know.
+
+                        Going to try make the usual 9-5 job first work timeline.
 
                          */
                         textView.setText("Idle ");
@@ -301,3 +316,24 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                          */
+
+
+/*
+
+Chronometer timeElapsed  = (Chronometer) findViewById(R.id.chronomete);
+timeElapsed.setOnChronometerTickListener(new OnChronometerTickListener(){
+        @Override
+            public void onChronometerTick(Chronometer cArg) {
+            long time = SystemClock.elapsedRealtime() - cArg.getBase();
+            int h   = (int)(time /3600000);
+            int m = (int)(time - h*3600000)/60000;
+            int s= (int)(time - h*3600000- m*60000)/1000 ;
+            String hh = h < 10 ? "0"+h: h+"";
+            String mm = m < 10 ? "0"+m: m+"";
+            String ss = s < 10 ? "0"+s: s+"";
+            cArg.setText(hh+":"+mm+":"+ss);
+        }
+    });
+    timeElapsed.setBase(SystemClock.elapsedRealtime());
+    timeElapsed.start();
+ */

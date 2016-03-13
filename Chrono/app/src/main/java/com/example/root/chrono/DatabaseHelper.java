@@ -24,6 +24,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_5 = "HOMEY";
     public static final String COL_6 = "TIME";
     public static final String COL_7 = "HOURS";
+    /*
+
+    public static final String COL_8 = "WORKTIME";
+    public static final String COL_9 = "HOMETIME";
+     */
 
     @Override
     public void onCreate(SQLiteDatabase db) {
