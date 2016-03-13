@@ -18,12 +18,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "main.db";
     public static final String TABLE_NAME = "main_table";
     public static final String COL_1 = "ID";
-    public static final String COL_2 = "WORK";
-    public static final String COL_3 = "TIME";
-    public static final String COL_4 = "HOURS";
+    public static final String COL_2 = "WORKX";
+    public static final String COL_3 = "WORKY";
+    public static final String COL_4 = "HOMEX";
+    public static final String COL_5 = "HOMEY";
+    public static final String COL_6 = "TIME";
+    public static final String COL_7 = "HOURS";
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, WORK TEXT, TIME TEXT, HOURS INTEGER) ");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, WORKX TEXT, WORKY TEXT, HOMEX TEXT, HOMEY TEXT, TIME TEXT, HOURS INTEGER) ");
     }
 
     @Override
@@ -31,13 +35,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         onCreate(db);
     }
-    public boolean insertData(String work, String time, String hours)
+    public boolean insertData(String workx, String worky, String homex, String homey, String time, String hours)
     {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,work);
-        contentValues.put(COL_3,time);
-        contentValues.put(COL_4, hours);
+        contentValues.put(COL_2,workx);
+        contentValues.put(COL_3,worky);
+        contentValues.put(COL_4,homex);
+        contentValues.put(COL_5,homey);
+        contentValues.put(COL_6,time);
+        contentValues.put(COL_7,hours);
         long result = db.insert(TABLE_NAME,null ,contentValues);
         if (result == -1)
         {
@@ -53,14 +60,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from " + TABLE_NAME,null);
         return res;
     }
-    public boolean updateData(String id, String work, String time, String hours)
+    public boolean updateData(String id, String workx, String worky, String homex, String homey, String time, String hours)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,id);
-        contentValues.put(COL_2,work);
-        contentValues.put(COL_3,time);
-        contentValues.put(COL_4, hours);
+        contentValues.put(COL_2,workx);
+        contentValues.put(COL_3,worky);
+        contentValues.put(COL_4,homex);
+        contentValues.put(COL_5,homey);
+        contentValues.put(COL_6,time);
+        contentValues.put(COL_7,hours);
         db.update(TABLE_NAME, contentValues, "id = ?",new String[] { id } );
         return true;
     }

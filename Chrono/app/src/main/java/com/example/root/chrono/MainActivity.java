@@ -112,7 +112,9 @@ public class MainActivity extends AppCompatActivity {
                         // if(location.getLatitude() == )
                         counterfordriving = 0;
                         chronometer_driving.stop();
-                        boolean isInserted =  myDb.insertData(chronometer_driving.getText().toString(), chronometer_driving.getText().toString(), chronometer_driving.getText().toString());
+                        // String workx, String worky, String homex, String homey, String time, String hours
+                        // boolean isInserted =  myDb.insertData(chronometer_driving.getText().toString(), chronometer_driving.getText().toString(), chronometer_driving.getText().toString());
+
                         if (isInserted = true)
                         {
                             // send a message or whatever
@@ -192,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
                     - Fix the bugs when they come up.
                      */
-                
+
             }
 
             @Override
