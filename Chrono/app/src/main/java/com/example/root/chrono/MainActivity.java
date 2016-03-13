@@ -134,6 +134,10 @@ public class MainActivity extends AppCompatActivity {
 
                         if the corrdinetes match the work corridnates before then it should assign to something. Also associate the systems clock (take timestamps).
 
+                        Also use the calender to try detect patterns. Figure out how to detect the difference between work/school, home and driving. Detect patterns in weekends and timing.
+
+                        This will be difficult and challenging but also really rewarding and I WILL finish this project.
+
                          */
                         textView.setText("Idle ");
 
@@ -187,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
                     - In the settings page there is tons of options so you can choose to be more accurate or save more batter etc etc.
 
                     - Use google maps api to see the places around you to guess what you are doing. Example next to a gym then it asumes that you are at a gym because you do this often. etc etc
+
+                    - Fix the bugs when they come up.
                      */
 
 
