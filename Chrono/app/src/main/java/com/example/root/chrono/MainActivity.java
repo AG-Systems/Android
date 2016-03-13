@@ -130,7 +130,11 @@ public class MainActivity extends AppCompatActivity {
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
 
+                        /* sudo code
 
+                        if the corrdinetes match the work corridnates before then it should assign to something. Also associate the systems clock (take timestamps).
+
+                         */
                         textView.setText("Idle ");
 
                     }
