@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         myDb = new DatabaseHelper(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -113,6 +114,13 @@ public class MainActivity extends AppCompatActivity {
                         // if(location.getLatitude() == )
                         counterfordriving = 0;
                         chronometer_driving.stop();
+                        boolean isInserted =  myDb.insertData(chronometer_driving.getText().toString(), chronometer_driving.getText().toString(), chronometer_driving.getText().toString());
+                        if (isInserted = true)
+                        {
+
+                        }
+                        else
+                        {}
                         if(counterforwork == 3)
                         {
                             chronometer_working.setBase(SystemClock.elapsedRealtime());
