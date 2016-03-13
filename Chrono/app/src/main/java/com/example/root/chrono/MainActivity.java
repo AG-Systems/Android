@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         boolean isInserted =  myDb.insertData(chronometer_driving.getText().toString(), chronometer_driving.getText().toString(), chronometer_driving.getText().toString());
                         if (isInserted = true)
                         {
-
+                            // send a message or whatever
                         }
                         else
                         {}
@@ -129,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
 
                         workx.add(location.getLatitude());
                         workx.add(location.getLongitude());
+
+
                         textView.setText("Idle ");
 
                     }
