@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView3;
     public Chronometer chronometer_driving;
     public Chronometer chronometer_working;
+    public Chronometer chronometer_home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         textView2 = (TextView) findViewById(R.id.textView2);
         chronometer_driving = (Chronometer)findViewById(R.id.chronometer_driving);
         chronometer_working = (Chronometer)findViewById(R.id.chronometer_working);
+        chronometer_home = (Chronometer)findViewById(R.id.chronometer_home);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
 
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             int intial = 0;
             int worktimehour = 0;
             int drivetimehour = 0;
+            int hometimehour = 0;
             boolean tasker = false;
             boolean working = false;
             double positivethresh = 0.00090;
@@ -117,17 +120,34 @@ public class MainActivity extends AppCompatActivity {
                         chronometer_driving.stop();
                         // String workx, String worky, String homex, String homey, String time, String hours
                         // boolean isInserted =  myDb.insertData(chronometer_driving.getText().toString(), chronometer_driving.getText().toString(), chronometer_driving.getText().toString());
+                        /*
                         if (isInserted = true)
                         {
                             // send a message or whatever
                         }
                         else
                         {}
+                        */
                         if(counterforwork == 3)
                         {
                             chronometer_working.setBase(SystemClock.elapsedRealtime());
                             chronometer_working.start();
                         }
+                        // need to test
+                        if (chronometer_working.getText().toString().equals("00:59:59"))
+                        {
+                            worktimehour++;
+
+                        }
+                        if (chronometer_driving.getText().toString().equals("00:59:59"))
+                        {
+                            drivetimehour++;
+                        }
+                        if (chronometer_home.getText().toString().equals("00:59:59"))
+                        {
+                            hometimehour++;
+                        }
+
 
                         if (chronometer_working.getText().toString().equals("00:59:59"))
                         {
