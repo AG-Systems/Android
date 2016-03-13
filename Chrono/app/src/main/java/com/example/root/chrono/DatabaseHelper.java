@@ -18,9 +18,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "main.db";
     public static final String TABLE_NAME = "main_table";
     public static final String COL_1 = "ID";
-    public static final String COL_2 = "NAME";
-    public static final String COL_3 = "SURNAME";
-    public static final String COL_4 = "MARKS";
+    public static final String COL_2 = "WORK";
+    public static final String COL_3 = "TIME";
+    public static final String COL_4 = "HOURS";
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, WORK TEXT, TIME TEXT, HOURS INTEGER) ");
@@ -31,13 +31,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         onCreate(db);
     }
-    public boolean insertData(String name, String surname, String marks)
+    public boolean insertData(String work, String time, String hours)
     {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,name);
-        contentValues.put(COL_3,surname);
-        contentValues.put(COL_4, marks);
+        contentValues.put(COL_2,work);
+        contentValues.put(COL_3,time);
+        contentValues.put(COL_4, hours);
         long result = db.insert(TABLE_NAME,null ,contentValues);
         if (result == -1)
         {
@@ -53,14 +53,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from " + TABLE_NAME,null);
         return res;
     }
-    public boolean updateData(String id, String name, String surname, String marks)
+    public boolean updateData(String id, String work, String time, String hours)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,id);
-        contentValues.put(COL_2,name);
-        contentValues.put(COL_3,surname);
-        contentValues.put(COL_4, marks);
+        contentValues.put(COL_2,work);
+        contentValues.put(COL_3,time);
+        contentValues.put(COL_4, hours);
         db.update(TABLE_NAME, contentValues, "id = ?",new String[] { id } );
         return true;
     }
