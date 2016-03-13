@@ -11,7 +11,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // String name, SQLiteDatabase.CursorFactory factory, int version
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getReadableDatabase();
+
     }
     public static final String DATABASE_NAME = "main.db";
     public static final String TABLE_NAME = "main_table";
@@ -28,5 +28,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         onCreate(db);
+    }
+    public boolean insertData(String name, String surname, String marks)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
     }
 }
