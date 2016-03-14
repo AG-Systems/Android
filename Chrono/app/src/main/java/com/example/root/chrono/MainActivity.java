@@ -221,6 +221,12 @@ public class MainActivity extends AppCompatActivity {
                     - Use google maps api to see the places around you to guess what you are doing. Example next to a gym then it asumes that you are at a gym because you do this often. etc etc
 
                     - Fix the bugs when they come up.
+
+                    1) user launches the app
+
+                    2) the app runs in the background and collects location data
+
+                    3) when the user launches the app AND there are places that are unkown to the app, show the places (maybe with a map) where the user can define the place
                      */
 
             }
