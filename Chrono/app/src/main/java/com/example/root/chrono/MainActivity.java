@@ -131,22 +131,6 @@ public class MainActivity extends AppCompatActivity {
                             workx.add(location.getLatitude());
                             workx.add(location.getLongitude());
                         }
-
-                        /* sudo code
-
-                        if the corrdinetes match the work corridnates before then it should assign to something. Also associate the systems clock (take timestamps).
-
-                        Also use the calender to try detect patterns. Figure out how to detect the difference between work/school, home and driving. Detect patterns in weekends and timing.
-
-                        This will be difficult and challenging but also really rewarding and I WILL finish this project.
-
-                        How am I going to know when im at work for the first time.
-
-                        I can make it so the user needs to be at home to start. maybe start then go driving then be at work for a few hours and then it will know.
-
-                        Going to try make the usual 9-5 job first work timeline.
-
-                         */
                         textView.setText("Idle ");
 
                     }
