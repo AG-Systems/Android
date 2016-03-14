@@ -83,9 +83,6 @@ public class MainActivity extends AppCompatActivity {
             int reset = 0;
             int maxreset = 2000000000;
             int intial = 0;
-            int worktimehour = 0;
-            int drivetimehour = 0;
-            int hometimehour = 0;
             boolean tasker = false;
             boolean working = false;
             double positivethresh = 0.00090;
