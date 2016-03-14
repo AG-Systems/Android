@@ -128,25 +128,6 @@ public class MainActivity extends AppCompatActivity {
                         else
                         {}
                         */
-                        if(counterforwork == 3)
-                        {
-                            chronometer_working.setBase(SystemClock.elapsedRealtime());
-                            chronometer_working.start();
-                        }
-                        // need to test
-                        if (chronometer_working.getText().toString().equals("00:59:59"))
-                        {
-                            worktimehour++;
-                            textView.setText("it worked");
-                        }
-                        if (chronometer_driving.getText().toString().equals("00:59:59"))
-                        {
-                            drivetimehour++;
-                        }
-                        if (chronometer_home.getText().toString().equals("00:59:59"))
-                        {
-                            hometimehour++;
-                        }
 
                         if(working = true)
                         {
@@ -226,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
                     2) the app runs in the background and collects location data
 
-                    3) when the user launches the app AND there are places that are unkown to the app, show the places (maybe with a map) where the user can define the place
+                    3) when the user launches the app AND there are places that are unknown to the app, show the places (maybe with a map) where the user can define the place
                      */
 
             }
