@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
 
     }
-    public static final String DATABASE_NAME = "main.db";
+    public static final String DATABASE_NAME = "mainTest.db";
     public static final String TABLE_NAME = "main_table";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "WORKX";
@@ -53,7 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_6,genx);
         contentValues.put(COL_7,geny);
         contentValues.put(COL_8,time);
-        contentValues.put(COL_9,hours);
+        contentValues.put(COL_9, hours);
         long result = db.insert(TABLE_NAME,null ,contentValues);
         if (result == -1)
         {
@@ -85,4 +85,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_NAME, contentValues, "id = ?",new String[] { id } );
         return true;
     }
+    public Integer deleteData (String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, "ID = ?",new String[] {id});
+    }
 }
+
