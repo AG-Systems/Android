@@ -46,13 +46,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         {
             return;
         }
-
+        location1x = Double.parseDouble(res.getString(5));
+        location1y = Double.parseDouble(res.getString(6));
+        location2x = Double.parseDouble(res.getString(1));
+        location2y = Double.parseDouble(res.getString(2));
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext())
         {
             buffer.append("Id : " + res.getString(0));
             location1x = Double.parseDouble(res.getString(5));
             location1y = Double.parseDouble(res.getString(6));
+
         }
     }
     /**
@@ -71,7 +75,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(location1x, location1y);
+        LatLng test1 = new LatLng(location2x, location2y);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(test1).title("Marker in Sydney213123"));
         // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         float zoomLevel = 13.0f; // goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoomLevel));
