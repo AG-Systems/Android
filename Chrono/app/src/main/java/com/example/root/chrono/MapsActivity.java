@@ -50,6 +50,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         location1y = Double.parseDouble(res.getString(6));
         location2x = Double.parseDouble(res.getString(1));
         location2y = Double.parseDouble(res.getString(2));
+        location3x = Double.parseDouble(res.getString(3));
+        location3y = Double.parseDouble(res.getString(4));
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext())
         {
@@ -76,8 +78,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(location1x, location1y);
         LatLng test1 = new LatLng(location2x, location2y);
+        LatLng test2 = new LatLng(location3x, location3y);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.addMarker(new MarkerOptions().position(test1).title("Marker in Sydney213123"));
+        mMap.addMarker(new MarkerOptions().position(test2).title("Marker in ur mum"));
         // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         float zoomLevel = 13.0f; // goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoomLevel));
