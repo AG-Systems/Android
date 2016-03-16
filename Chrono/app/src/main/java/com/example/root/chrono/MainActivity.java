@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         // if(location.getLatitude() == )
                         counterfordriving = 0;
                         chronometer_driving.stop();
+                        boolean isInserted = myDb.insertData(null,null,null,null,String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()), null, null);
                         // String workx, String worky, String homex, String homey, String time, String hours
                         // boolean isInserted =  myDb.insertData(chronometer_driving.getText().toString(), chronometer_driving.getText().toString(), chronometer_driving.getText().toString());
                         /*

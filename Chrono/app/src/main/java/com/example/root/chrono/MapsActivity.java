@@ -1,5 +1,6 @@
 package com.example.root.chrono;
 
+import android.database.Cursor;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -13,6 +14,18 @@ import com.example.root.chrono.MainActivity;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     DatabaseHelper myDb;
+    double location1x;
+    double location1y;
+    double location2x;
+    double location2y;
+    double location3x;
+    double location3y;
+    double location4x;
+    double location4y;
+    double location5x;
+    double location5y;
+    double location6x;
+    double location6y;
 
     private GoogleMap mMap;
 
@@ -26,8 +39,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+    public void viewAll()
+    {
+        Cursor res = myDb.getAllData();
+        if (res.getCount() == 0)
+        {
+            return;
+        }
 
-
+        StringBuffer buffer = new StringBuffer();
+        while (res.moveToNext())
+        {
+            buffer.append("Id : " + res.getString(0));
+            location1x = Double.parseDouble(res.getString(5));
+            location1y = Double.parseDouble(res.getString(6));
+        }
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -37,12 +64,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(location1x, location1y);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         float zoomLevel = 13.0f; // goes up to 21
