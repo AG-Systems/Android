@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
 
     }
-    public static final String DATABASE_NAME = "mainTest.db";
+    public static final String DATABASE_NAME = "main.db";
     public static final String TABLE_NAME = "main_table";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "WORKX";
