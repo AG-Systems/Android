@@ -91,4 +91,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_NAME, "ID = ?",new String[] {id});
     }
 }
+/*
+1) user launches the app
 
+2) the app runs in the background and collects location data
+
+3) when the user launches the app AND there are places that are unknown to the app, show the places (maybe with a map) where the user can define the place.
+
+ */
