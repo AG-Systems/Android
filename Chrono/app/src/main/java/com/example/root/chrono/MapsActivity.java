@@ -81,9 +81,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng test1 = new LatLng(location2x, location2y);
         LatLng test2 = new LatLng(location3x, location3y);
         mMap.addMarker(new MarkerOptions().position(test1).title("Testing"));
-        // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         float zoomLevel = 13.0f; // goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(test1, zoomLevel));
+        while(true)
+        {
+            mMap.addMarker(new MarkerOptions().position(test2).title("Testing"));
+        }
+        // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
     }
 }
 
