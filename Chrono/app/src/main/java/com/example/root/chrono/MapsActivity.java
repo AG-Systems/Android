@@ -17,16 +17,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     DatabaseHelper myDb;
     double location1x;
     double location1y;
-    double location2x;
-    double location2y;
-    double location3x;
-    double location3y;
-    double location4x;
-    double location4y;
-    double location5x;
-    double location5y;
-    double location6x;
-    double location6y;
 
     private GoogleMap mMap;
 
@@ -49,10 +39,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         location1x = Double.parseDouble(res.getString(5));
         location1y = Double.parseDouble(res.getString(6));
-        location2x = Double.parseDouble(res.getString(1));
-        location2y = Double.parseDouble(res.getString(2));
-        location3x = Double.parseDouble(res.getString(3));
-        location3y = Double.parseDouble(res.getString(4));
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext())
         {
