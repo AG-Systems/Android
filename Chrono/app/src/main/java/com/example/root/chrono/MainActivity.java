@@ -90,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
             long worktimestart = 0;
             long drivingtimestart = 0;
             @Override
-            public void onLocationChanged(Location location) {
+            public void onLocationChanged(Location location)
+            {
 
 
                 if (tasker == false)
